@@ -20,4 +20,4 @@
 
 ## Making a Web Component (10 minutes)
 
-## Q & A (5-10 minutes)
+## Final Q & A (5 minutes)
