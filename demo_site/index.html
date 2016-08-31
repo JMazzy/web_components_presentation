@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Component Demo</title>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen|Oxygen+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <h1>Web Component Demo</h1>
+    </header>
+
+    <main>
+
+      <section>
+
+        <h2>What are web components?</h2>
+
+        <blockquote>“Reusable UI widgets created using open Web technology” -- MDN</blockquote>
+
+        <p>Defined in the W3C web specifications, and part of the new web standard. Modern browsers have implemented (or are in the process of implementing) them.</p>
+
+        <p>Four separate but synergistic technologies join forces to allow web components (we’ll talk about each in more depth):
+        </p>
+
+        <ul>
+          <li>Custom Elements</li>
+          <li>HTML Templates</li>
+          <li>Shadow DOM</li>
+          <li>HTML Imports</li>
+        </ul>
+
+        <p>Created using HTML, CSS, JS, just like anything else on the front-end</p>
+
+        <h2>Why use web components?</h2>
+
+        <h3>Web components are:</h3>
+
+        <h4>Portable</h4>
+        <p>
+          You can define a web component once, and use it anywhere. They can be stored locally or remotely and included using <code>script</code> tags like any JS file.
+        </p>
+
+        <h4>Reusable</h4>
+        <p>
+          Web components can be reused with whatever content you want, while maintaining the same behavior. Can also be used across multiple products and by other developers and modified (or not) based on their needs.
+        </p>
+
+        <h4>Modular</h4>
+        <p>
+          Web components are self-contained and separate from the rest of the DOM. You then use them within your page with a custom HTML tag.
+        </p>
+
+        <h4>DRY (Don't Repeat Yourself)</h4>
+        <p>
+          Web components allow you to have complex functionality defined once, and used many places, which allows for less repetition.
+        </p>
+
+        <h2>Specifications</h2>
+
+        <h3>Changes to web standards which enable web components (MDN):</h3>
+
+        <h4>New and Extended Elements</h4>
+        <ul>
+          <li><code>&lt;template&gt;</code> and <code>&lt;shadow&gt;</code> elements have been added to standard HTML.</li>
+
+          <li>API interfaces for new elements (<code>HTMLTemplateElement</code>, <code>HTMLShadowElement</code>)</li>
+
+          <li>Extensions of <code>&lt;link&gt;</code> and the <code>HTMLLinkElement</code> interface</li>
+        </ul>
+
+        <h4>Custom Elements Added</h4>
+        <ul>
+          <li>Added <code>Document.registerElement()</code>, Modified <code>Document.createElement()</code> and <code>Document.createElementNS()</code></li>
+
+          <li>“Lifecycle callbacks” can be added to the prototype of a custom element</li>
+
+          <li>CSS pseudo-class <code>:unresolved</code>, style elements by default</li>
+        </ul>
+
+        <h4>Shadow DOM Added</h4>
+        <ul>
+          <li>Shadow DOM, <code>ShadowRoot</code> and <code>Element.createShadowRoot()</code>, <code>Element.getDestinationInsertionPoints()</code>, <code>Element.shadowRoot</code></li>
+
+          <li>Extend <code>Event</code> interface, <code>Event.path</code></li>
+
+          <li>Document interface extensions</li>
+        </ul>
+
+        <h4>New Styling</h4>
+        <ul>
+
+          <li>Pseudo-classes <code>:host</code>, <code>:host()</code>,
+          <code>:host-context()</code></li>
+
+          <li>Pseudo-elements <code>::shadow</code>, <code>::content</code></li>
+
+          <li>Combinator, <code>/deep/</code></li>
+
+        </ul>
+
+        <h3>Custom Elements</h3>
+
+        <p>
+          Pretty self-explanatory. It lets you define and use new HTML tags. You can also extend existing tags to create new ones, and even extend your custom tags.
+        </p>
+
+        <p>
+          The idea is to stop the proliferation of <code>div</code>s and improve readability.
+        </p>
+
+        <a href="custom_element_example.html">Custom Element Example</a>
+
+        <h3>HTML Imports</h3>
+
+        <p>
+          Import HTML documents for display in other HTML documents.
+        </p>
+
+        <h3>HTML Templates</h3>
+
+        <p>
+          Allows declaring “inert DOM subtrees” in your HTML and “instantiate document fragments with identical contents”.
+        </p>
+
+        <h4>The <code>&lt;template&gt;</code> Element</h4>
+
+        <p>
+          Can be used on its own, unlike <code>&lt;shadow&gt;</code>.
+        </p>
+
+        <p>
+          Basically, this lets us define a section of HTML which is not rendered immediately, but only when it is referenced by JavaScript code.
+        </p>
+
+        <a href="template_example.html">
+          Example of <code>&lt;template&gt;</code>
+        </a>
+
+        <h3>Shadow DOM</h3>
+
+        <p>Sounds sketchy but it's not. Improves encapsulation of HTML DOM trees. You can now create a boundary between DOM trees.</p>
+
+        <h4>The <code>&lt;shadow&gt;</code> Element</h4>
+
+        <p>
+          Not useful in normal HTML - only used in web components.
+        </p>
+
+        <h2>But CAN I use them?</h2>
+
+        <h3>Browser Support (Latest Versions)</h3>
+
+        <p>
+          Chrome/Chromium and Opera have full, native support.
+        </p>
+
+        <p>
+          Firefox supports them but they must be manually turned on in the browser. Full support for templates, partial support for others.
+        </p>
+
+        <p>
+          IE/Edge and Safari support templates, but has only spotty support for the other pieces.
+        </p>
+
+        <h3>Polyfills/Libraries</h3>
+
+        <p>Libraries which patch/use/supplement/improve web components</p>
+
+        <h4>webcomponents.js</h4>
+        <p>
+          A commonly used polyfill which patches missing browser features for you.
+        </p>
+        <a href="https://github.com/webcomponents/webcomponentsjs">
+          https://github.com/webcomponents/webcomponentsjs
+        </a>
+
+        <h4>Polymer</h4>
+
+        <p>Google Polymer is a is a framework which uses Web Components, and provides polyfills to bridge the gap to full browser support of Web Components. You can use Web Components without Google Polymer (but not vice versa). (MDN)</p>
+
+        <h4>Basic Web Components</h4>
+
+        <p>
+          An open-source project creating simple web components representing commonly desired widgets.
+        </p>
+
+        <h5>Auto-resizing textarea</h5>
+        <basic-autosize-textarea minimum-rows="2" placeholder="Type all you want here!">
+        </basic-autosize-textarea>
+
+        <p>
+          For more, see the demos at <a href="http://basicwebcomponents.org/">Basic Web Components</a> and the code at <a href="https://github.com/basic-web-components/basic-web-components">GitHub</a>.
+        </p>
+
+      </section>
+
+    </main>
+
+    <footer>
+      <!--
+      CDN source for the webcomponents.js compatibility library. It lets you use webcomponents even to target browsers which don't support them.
+      -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.20/webcomponents.min.js"></script>
+
+      <!--
+      This is how you import the actual web components.
+      -->
+      <script src="http://basicwebcomponents.org/basic-web-components/packages/basic-autosize-textarea/dist/basic-autosize-textarea.js"></script>
+
+      <script type="text/javascript" src="js/main.js"></script>
+    </footer>
+  </body>
+</html>
