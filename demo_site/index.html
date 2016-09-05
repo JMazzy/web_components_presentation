@@ -130,6 +130,8 @@
           A simple but powerful feature. Import HTML documents into other HTML documents! This feature has been sorely lacking in HTML, so this is an especially interesting one. This allows for greater code modularity and readability.
         </p>
 
+        <h4>Clean Up CSS/JS Dependencies</h4>
+
         <p>
           The most obvious use is that it allows you to put all CSS <code>link</code> tags and JavaScript <code>script</code> tags into a separate HTML file, which is then loaded into your main HTML file in a single <code>link</code>.
         </p>
@@ -141,6 +143,8 @@
           </code>
         </p>
 
+        <h4>Bring in Chunks of Content</h4>
+
         <p>
           It also allows importing actual HTML markup. You can later add that content to the DOM for display.
         </p>
@@ -149,6 +153,7 @@
         <ul>
           <li>Don't get carried away loading tons more HTML files than you need to! Balance modularity and performance, and use imports to manage dependencies, not increase them. This shouldn't be an issue under most normal circumstances, but it's just something to watch for.</li>
           <li>Be careful of CORS (cross-origin resource sharing) errors that may come from trying to load HTML from an outside source. If you run into this locally, it can be helpful to run code from a local development server rather than directly from the filesystem.</li>
+          <li>Linking to markup doesn't actually substitute that tag for the content itself. You need to use JavaScript to add items to the DOM.</li>
         </ul>
 
         <h3>HTML Templates</h3>
@@ -164,7 +169,11 @@
         </p>
 
         <p>
-          Basically, this lets us define a section of HTML which is not rendered immediately, but only when it is referenced by JavaScript code.
+          Basically, this lets us define a section of HTML ("DOM subtree") which is not rendered immediately ("inert"), but only when it is referenced by JavaScript code.
+        </p>
+
+        <p>
+          This allows us to clone that subtree multiple times, and change only the details of the content inside (see example).
         </p>
 
         <a href="template_example.html">
@@ -185,7 +194,13 @@
 
       <section>
 
-        <h2>But CAN I use them?</h2>
+        <h2>Building a Web Component</h2>
+
+      </section>
+
+      <section>
+
+        <h2>What about browser support?</h2>
 
         <h3>Browser Support (Latest Versions)</h3>
 
