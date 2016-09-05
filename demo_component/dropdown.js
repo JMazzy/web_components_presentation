@@ -1,4 +1,7 @@
 
+var suppliedContent = document.querySelectorAll("x-dropdown");
+console.log(suppliedContent)
+
 // Find the template
 var ownerDocument = document.currentScript.ownerDocument;
 var template = ownerDocument.querySelector('#dropdown-template');
@@ -24,10 +27,8 @@ dropdownPrototype.init = function() {
 };
 
 dropdownPrototype.registerListeners = function() {
-  console.log(this._bar)
   this._bar.addEventListener('click', function(evt) {
     var body = this.nextElementSibling;
-    console.log(evt)
     if ( body.classList.contains('hidden') ) {
       this.classList.remove('folded')
       body.classList.remove('hidden');
