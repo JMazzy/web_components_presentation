@@ -12,17 +12,25 @@
     </header>
 
     <main>
-      <!-- <basic-slideshow> -->
 
       <section>
 
         <h2>What are web components?</h2>
 
-        <blockquote>“Reusable UI widgets created using open Web technology” -- MDN</blockquote>
+        <blockquote>
+          “Reusable UI widgets created using open Web technology” -- MDN
+        </blockquote>
 
-        <p>Defined in the W3C web specifications, and part of the new web standard. Modern browsers have implemented (or are in the process of implementing) them.</p>
+        <p>
+          Defined in the W3C web specifications, and part of the new web standard.
+        </p>
 
-        <p>Four separate but synergistic technologies join forces to allow web components (we’ll talk about each in more depth):
+        <p>
+          Some browsers now have partial native support. For browsers without support, there are JavaScript libraries which provide support if you want to use web components.
+        </p>
+
+        <p>
+          Four separate technologies are used together to allow web components (we’ll talk about each in more depth):
         </p>
 
         <ul>
@@ -53,7 +61,7 @@
 
         <h4>Modular</h4>
         <p>
-          Web components are self-contained and separate from the rest of the DOM. You then use them within your page with a custom HTML tag.
+          Web components are self-contained and separate from the rest of the DOM. You can use them within your page with a custom HTML tag.
         </p>
 
         <h4>DRY (Don't Repeat Yourself)</h4>
@@ -69,40 +77,67 @@
 
         <h4>New and Extended Elements</h4>
         <ul>
-          <li><code>&lt;template&gt;</code> and <code>&lt;shadow&gt;</code> elements have been added to standard HTML.</li>
+          <li>
+            <code>&lt;template&gt;</code> and
+            <code>&lt;shadow&gt;</code> elements have been added to standard HTML.
+          </li>
 
-          <li>API interfaces for new elements (<code>HTMLTemplateElement</code>, <code>HTMLShadowElement</code>)</li>
+          <li>
+            API interfaces for new elements (<code>HTMLTemplateElement</code>, <code>HTMLShadowElement</code>)
+          </li>
 
-          <li>Extensions of <code>&lt;link&gt;</code> and the <code>HTMLLinkElement</code> interface</li>
+          <li>
+            Extensions of <code>&lt;link&gt;</code> and the <code>HTMLLinkElement</code> interface
+          </li>
         </ul>
 
         <h4>Custom Elements Added</h4>
         <ul>
-          <li>Added <code>Document.registerElement()</code>, Modified <code>Document.createElement()</code> and <code>Document.createElementNS()</code></li>
+          <li>
+            Added <code>Document.registerElement()</code>, Modified <code>Document.createElement()</code> and <code>Document.createElementNS()</code>
+          </li>
 
-          <li>“Lifecycle callbacks” can be added to the prototype of a custom element</li>
+          <li>
+            “Lifecycle callbacks” can be added to the prototype of a custom element
+          </li>
 
-          <li>CSS pseudo-class <code>:unresolved</code>, style elements by default</li>
+          <li>
+            CSS pseudo-class <code>:unresolved</code>, style elements by default
+          </li>
         </ul>
 
         <h4>Shadow DOM Added</h4>
         <ul>
-          <li>Shadow DOM, <code>ShadowRoot</code> and <code>Element.createShadowRoot()</code>, <code>Element.getDestinationInsertionPoints()</code>, <code>Element.shadowRoot</code></li>
+          <li>
+            Shadow DOM, <code>ShadowRoot</code> and <code>Element.createShadowRoot()</code>, <code>Element.getDestinationInsertionPoints()</code>, <code>Element.shadowRoot</code>
+          </li>
 
-          <li>Extend <code>Event</code> interface, <code>Event.path</code></li>
+          <li>
+            Extend <code>Event</code> interface, <code>Event.path</code>
+          </li>
 
-          <li>Document interface extensions</li>
+          <li>
+            Document interface extensions
+          </li>
         </ul>
 
         <h4>New Styling</h4>
         <ul>
 
-          <li>Pseudo-classes <code>:host</code>, <code>:host()</code>,
-          <code>:host-context()</code></li>
+          <li>
+            Pseudo-classes <code>:host</code>,
+            <code>:host()</code>,
+            <code>:host-context()</code>
+          </li>
 
-          <li>Pseudo-elements <code>::shadow</code>, <code>::content</code></li>
+          <li>
+            Pseudo-elements <code>::shadow</code>,
+            <code>::content</code>
+          </li>
 
-          <li>Combinator, <code>/deep/</code></li>
+          <li>Combinator,
+            <code>/deep/</code>
+          </li>
 
         </ul>
 
@@ -151,9 +186,17 @@
 
         <h4>Tips:</h4>
         <ul>
-          <li>Don't get carried away loading tons more HTML files than you need to! Balance modularity and performance, and use imports to manage dependencies, not increase them. This shouldn't be an issue under most normal circumstances, but it's just something to watch for.</li>
-          <li>Be careful of CORS (cross-origin resource sharing) errors that may come from trying to load HTML from an outside source. If you run into this locally, it can be helpful to run code from a local development server rather than directly from the filesystem.</li>
-          <li>Linking to markup doesn't actually substitute that tag for the content itself. You need to use JavaScript to add items to the DOM.</li>
+          <li>
+            Don't get carried away loading tons more HTML files than you need to! Balance modularity and performance, and use imports to manage dependencies, not increase them. This shouldn't be an issue under most normal circumstances, but it's just something to watch for.
+          </li>
+
+          <li>
+            Be careful of CORS (cross-origin resource sharing) errors that may come from trying to load HTML from an outside source. If you run into this locally, it can be helpful to run code from a local development server rather than directly from the filesystem.
+          </li>
+
+          <li>
+            Linking to markup doesn't actually substitute that tag for the content itself. You need to use JavaScript to add items to the DOM.
+          </li>
         </ul>
 
         <h3>HTML Templates</h3>
@@ -248,7 +291,54 @@
 
       </section>
 
-      <!-- </basic-slideshow> -->
+      <section>
+        <h3>Building a web component</h3>
+        <h4>Files: Multiple approaches</h4>
+        <ol>
+          <li>
+            One HTML file, with everything included.
+            <ul>
+              <li>Possible due to HTML imports.</li>
+              <li>Everything in one place.</li>
+              <li>Gets unwieldy as soon as your file gets large.</li>
+              <li>HTML imports can still be a bit flakier than JS imports.</li>
+            </ul>
+          </li>
+          <li>
+            One JavaScript file, everything included.
+            <ul>
+              <li>Including JS files tends to work better when using items from a remote server (since it is already used very commonly in things like CDNs).</li>
+              <li>Creating an HTML template in a JavaScript string is awkward at best (unless you are using ES6, where it is slightly less so)</li>
+              <li>This approach (with ES6 converted to ES5 for older browsers) is used by Basic Web Components</li>
+            </ul>
+          </li>
+          <li>
+            Some combination of multiple files.
+            <ul>
+              <li>Seems best for large components due to modularity.</li>
+              <li>Closest to the usual best practice for ordinary web pages, so it is familiar.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <x-dropdown>
+          <div>
+            first bar content
+          </div>
+          <div>
+            first body content
+          </div>
+        </x-dropdown>
+
+        <x-dropdown>
+          <div>
+            second bar content
+          </div>
+          <div>
+            second body content
+          </div>
+        </x-dropdown>
+      </section>
 
     </main>
 
