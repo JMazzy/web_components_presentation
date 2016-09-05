@@ -1,7 +1,3 @@
-
-var suppliedContent = document.querySelectorAll("x-dropdown");
-console.log(suppliedContent)
-
 // Find the template
 var ownerDocument = document.currentScript.ownerDocument;
 var template = ownerDocument.querySelector('#dropdown-template');
@@ -12,7 +8,6 @@ var dropdownPrototype = Object.create(HTMLElement.prototype);
 // Define createdCallback with a shadow root
 dropdownPrototype.createdCallback = function() {
   this.init();
-  this.render();
 }
 
 dropdownPrototype.init = function() {
@@ -22,6 +17,12 @@ dropdownPrototype.init = function() {
   // init component parts
   this._bar = this._root.querySelector('.dropdown-bar');
   this._body = this._root.querySelector('.dropdown-body');
+
+  var barContent = this.children[0].innerHTML;
+  var bodyContent = this.children[1].innerHTML;
+
+  this._bar.innerHTML = barContent;
+  this._body.innerHTML = bodyContent;
 
   this.registerListeners();
 };
@@ -38,14 +39,6 @@ dropdownPrototype.registerListeners = function() {
     }
   }, true);
 };
-
-dropdownPrototype.render = function() {
-
-};
-
-dropdownPrototype.refresh = function() {
-
-}
 
 dropdownPrototype.createRootElement = function() {
   var root = this.createShadowRoot();
