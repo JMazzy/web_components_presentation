@@ -22,6 +22,7 @@ This is a presentation on web components for the Ithaca Web People Meetup on Aug
 
 ### Examples and published components
 - Customelements.io https://customelements.io/
+- Component Kitchen http://component.kitchen/
 - Polymer Catalog https://elements.polymer-project.org/
 - Built with Polymer https://builtwithpolymer.org/
 
