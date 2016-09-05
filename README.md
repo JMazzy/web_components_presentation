@@ -1,7 +1,7 @@
 # Introduction to Web Components
 ## Joshua Masland-Sarani
 
-This is a presentation on web components for the Ithaca Web People Meetup on August 6, 2016
+This is a presentation on web components for the Ithaca Web People Meetup on September 6, 2016
 
 ## Sources & Links
 
