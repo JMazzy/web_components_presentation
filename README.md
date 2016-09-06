@@ -27,5 +27,4 @@ This is a presentation on web components for the Ithaca Web People Meetup on Sep
 - Built with Polymer https://builtwithpolymer.org/
 
 ### Unusual use cases for web components
-- Servers made WITH web components:
-  - https://scotch.io/tutorials/server-side-web-components-how-and-why
+- Server (yup that's right) made WITH web components https://scotch.io/tutorials/server-side-web-components-how-and-why
