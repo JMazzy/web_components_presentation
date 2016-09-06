@@ -49,25 +49,19 @@
 
         <h3>Web components are:</h3>
 
-        <h4>Portable</h4>
+        <h4>Reusable, Modular, Portable, and DRY</h4>
         <p>
-          You can define a widget once, and use it anywhere. They can be stored locally or remotely and included using <code>script</code> tags like any JS file.
+          You can build a widget once, and use it anywhere. They can be stored locally or remotely and included using <code>script</code> tags like any JS file, or using HTML imports.
         </p>
 
-        <h4>Reusable</h4>
         <p>
-          Web components can be reused with whatever content you want, while maintaining the same behavior. Can also be used across multiple products and by other developers and modified (or not) based on their needs.
+          Web components can be reused with different content, while maintaining the same behavior. Can also be used across multiple projects and shared for use by anyone.
         </p>
 
-        <h4>Modular</h4>
         <p>
           Web components are self-contained and separate from the rest of the DOM. You can use them within your page with a custom HTML tag.
         </p>
 
-        <h4>DRY (Don't Repeat Yourself)</h4>
-        <p>
-          Web components allow you to define a widget's functionality once, and use it many places, which allows for less repetition.
-        </p>
       </section>
 
       <section>
@@ -241,33 +235,89 @@
 
         <h3>Browser Support (Latest Versions)</h3>
 
+        <h4>Chrome/Chromium</h4>
         <p>
-          Chrome/Chromium and Opera have full, native support.
+          Full, native support.
         </p>
 
+        <h4>Opera</h4>
         <p>
-          Firefox supports them but they must be manually turned on in the browser. Full support for templates, partial support for others.
+          Full, native support.
         </p>
 
+        <h4>Firefox</h4>
         <p>
-          IE/Edge and Safari support templates, but has only spotty support for the other pieces.
+          Full support for templates, partial support for others. Must be manually turned on in the browser.
         </p>
 
-        <h3>Polyfills/Libraries</h3>
+        <h4>Safari</h4>
 
-        <p>Libraries which patch/use/supplement/improve web components</p>
+        <p>
+          Support for templates, spotty support for the other pieces.
+        </p>
+
+        <h4>IE/Edge</h4>
+
+        <p>
+          Support for templates, spotty support for the other pieces.
+        </p>
+
+      </section>
+
+      <section>
+        <h2>Libraries</h2>
+
+        <h3>Polyfills</h3>
+
+        <p>Libraries which patch browser support web components</p>
 
         <h4>webcomponents.js</h4>
         <p>
           A commonly used polyfill which patches missing browser features for you.
         </p>
+
+        <p>
+          This (or similar) library is used in the more complex libraries below.
+        </p>
         <a href="https://github.com/webcomponents/webcomponentsjs">
           https://github.com/webcomponents/webcomponentsjs
         </a>
 
-        <h4>Polymer</h4>
+        <h3>Frameworks</h3>
 
-        <p>Google Polymer is a is a framework which uses Web Components, and provides polyfills to bridge the gap to full browser support of Web Components. You can use Web Components without Google Polymer (but not vice versa). (MDN)</p>
+        <p>
+          Libraries which extend web components and/or make it easier to create them.
+        </p>
+
+        <h4>Polymer Project</h4>
+
+        <p>
+          A library created by Google which enhances the standard web components and makes it easier to build them.
+        </p>
+
+        <p>
+          Also includes an extensive catalog of pre-built components.
+        </p>
+
+        <h4>X-Tag</h4>
+
+        <p>
+          A similar but lighter library backed by Microsoft as well as Mozilla.
+        </p>
+
+        <h4>Bosonic</h4>
+
+        <p>
+          A toolset to help build Web Components according to the official spec, and patch support for those specs for older browsers.
+        </p>
+
+        <h4>SkateJS</h4>
+
+        <p>
+          Light, extends the web component specs.
+        </p>
+
+        <h3>Pre-built Web Components</h3>
 
         <h4>Basic Web Components</h4>
 
@@ -282,7 +332,6 @@
         <p>
           For more, see the demos at <a href="http://basicwebcomponents.org/">Basic Web Components</a> and the code at <a href="https://github.com/basic-web-components/basic-web-components">GitHub</a>.
         </p>
-
       </section>
 
       <section>
@@ -290,32 +339,41 @@
         <h2>Getting Started Building Web Components</h2>
 
         <h3>Building a Web Component</h3>
+
         <h4>Files: Multiple approaches</h4>
+
         <ol>
+
           <li>
             One HTML file, with everything included.
+
             <ul>
               <li>Possible due to HTML imports.</li>
               <li>Everything in one place.</li>
               <li>Gets unwieldy as soon as your file gets large.</li>
               <li>HTML imports can still be a bit flakier than JS imports.</li>
             </ul>
+
           </li>
+
           <li>
             One JavaScript file, everything included.
+
             <ul>
               <li>Including JS files tends to work better when using items from a remote server (since it is already used very commonly in things like CDNs).</li>
-              <li>Creating an HTML template in a JavaScript string is awkward at best (unless you are using ES6, where it is slightly less so)</li>
-              <li>This approach (with ES6 converted to ES5 for older browsers) is used by Basic Web Components</li>
+              <li>Creating an HTML template in a JavaScript string is awkward at best (slightly less so with ES6).</li>
             </ul>
+
           </li>
+
           <li>
             Some combination of multiple files.
             <ul>
-              <li>Seems best for large components due to modularity.</li>
-              <li>Closest to the usual best practice for ordinary web pages, so it is familiar.</li>
+              <li>Necessary for larger components.</li>
+              <li>Closest to the usual best practice for ordinary web pages.</li>
             </ul>
           </li>
+
         </ol>
 
         <x-dropdown>
