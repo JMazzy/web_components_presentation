@@ -95,6 +95,12 @@ main {
   margin-right: auto;
 }
 
+cite {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
 thingy-thing {
   width: 50%;
   margin-left: auto;

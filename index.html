@@ -19,12 +19,16 @@
 
         <h2>What are web components?</h2>
 
-        <blockquote>
-          “Reusable UI widgets created using open Web technology” -- MDN
+        <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/Web_Components">
+          "...reusable UI widgets created using open Web technology." <cite>-- MDN</cite>
+        </blockquote>
+
+        <blockquote cite="https://en.wikipedia.org/wiki/Web_Components">
+          "Web Components are a set of features currently being added by the W3C to the HTML and DOM specifications that allow for the creation of reusable widgets or components in web documents and web applications. The intention behind them is to bring component-based software engineering to the World Wide Web. The components model allows for encapsulation and interoperability of individual HTML elements." <cite>-- Wikipedia</cite>
         </blockquote>
 
         <p>
-          Defined in the W3C web specifications, and part of the new web standard.
+          Defined in the W3C web specifications, and part of the current web standard.
         </p>
 
         <p>
@@ -74,6 +78,51 @@
       </section>
 
       <section>
+
+        <h2>What about browser support?</h2>
+
+        <h3>Browser Support</h3>
+
+        <p>
+          Note that this is for the latest versions; out-of-date browsers will have less support.
+        </p>
+
+        <h4>Chrome/Chromium</h4>
+        <p>
+          Full, native support.
+        </p>
+
+        <h4>Opera</h4>
+        <p>
+          Full, native support.
+        </p>
+
+        <h4>Firefox</h4>
+        <p>
+          Full support for templates, partial support for others. Must be manually turned on in the browser.
+        </p>
+
+        <h4>Safari</h4>
+
+        <p>
+          Support for templates, spotty support for the other pieces.
+        </p>
+
+        <h4>IE/Edge</h4>
+
+        <p>
+          Support for templates, spotty support for the other pieces.
+        </p>
+
+        <h3>Verdict</h3>
+
+        <p>
+          Support is increasing, but at this point, it is safest to just use polyfills or a component framework if you like using Web Components.
+        </p>
+
+      </section>
+
+      <section>
         <h2>Specifications</h2>
 
         <h3>General changes</h3>
@@ -114,41 +163,6 @@
             Document interface extensions which facilitate web component initialization.
           </li>
         </ul>
-
-      </section>
-
-      <section>
-
-        <h2>What about browser support?</h2>
-
-        <h3>Browser Support (Latest Versions)</h3>
-
-        <h4>Chrome/Chromium</h4>
-        <p>
-          Full, native support.
-        </p>
-
-        <h4>Opera</h4>
-        <p>
-          Full, native support.
-        </p>
-
-        <h4>Firefox</h4>
-        <p>
-          Full support for templates, partial support for others. Must be manually turned on in the browser.
-        </p>
-
-        <h4>Safari</h4>
-
-        <p>
-          Support for templates, spotty support for the other pieces.
-        </p>
-
-        <h4>IE/Edge</h4>
-
-        <p>
-          Support for templates, spotty support for the other pieces.
-        </p>
 
       </section>
 
@@ -370,7 +384,7 @@
         <h4>Basic Web Components</h4>
 
         <p>
-          An open-source project creating simple web components representing commonly desired widgets.
+          An example of an open-source project creating simple web components representing commonly desired widgets.
         </p>
 
         <h5>Auto-resizing textarea</h5>
@@ -388,6 +402,10 @@
 
         <h3>Building a Web Component</h3>
 
+        <p>
+          Inspired by SitePoint's tutorial "Creating a Multiselect as a Web Component" by Artem Tabalin
+        </p>
+
         <h4>Files: Multiple approaches</h4>
 
         <ol>
@@ -399,7 +417,6 @@
               <li>Possible due to HTML imports.</li>
               <li>Everything in one place.</li>
               <li>Gets unwieldy as soon as your file gets large.</li>
-              <li>HTML imports can still be a bit flakier than JS imports.</li>
             </ul>
 
           </li>
@@ -424,6 +441,94 @@
 
         </ol>
 
+        <h4>Planning</h4>
+
+        <p>
+          Plan out what you want your component to do. Ask questions.
+        </p>
+
+        <ul>
+          <li>
+            Who will use it on the development side?
+          </li>
+          <li>
+            How general or specific should you make it to get the job done?
+          </li>
+          <li>
+            What should it look like?
+          </li>
+          <li>
+            How will a web app user interact with it?
+          </li>
+          <li>Etc.</li>
+        </ul>
+
+        <h4>Template</h4>
+
+        <p>
+          Build your template in an HTML file (or as an ES6 multi-line string).
+        </p>
+
+        <p>
+          Create a variable in your JS as a handle for your template.
+        </p>
+
+        <p>
+          This generally will contain any styles you want to be packaged with the web component.
+        </p>
+
+        <h4>Custom Element</h4>
+
+        <p>
+          Name your custom element something descriptive. If you plan on publishing this publically, it shouldn't conflict with commonly used web components.
+        </p>
+
+        <p>
+          Register your custom element (this should actually end up at the end of the JS file, but you might as well write it when you create your template).
+        </p>
+
+        <p>
+          Create a prototype object based on <code>HTMLElement</code> or (preferably) something more specific to your application, which you can extend.
+        </p>
+
+        <h4>createdCallback</h4>
+
+        <p>
+          Define this on your prototype. It should be a function, and it should contain all the code related to creating and rendering your custom element.
+        </p>
+
+        <p>
+          Define sub-functions (such as <code>init()</code> and <code>render()</code>) to break up your code into more readable chunks.
+        </p>
+
+        <h4>Shadow DOM</h4>
+
+        <p>
+          Create the shadow root (shadow DOM).
+        </p>
+
+        <p>
+          Clone the template, import it as a node, and append it to the shadow DOM!
+        </p>
+
+        <h4>Initialize Your Component</h4>
+
+        <p>
+          Query to get a handle for relevant parts of your template.
+        </p>
+
+        <p>
+          Register event listeners to give your component the desired functionality.
+        </p>
+
+        <h4>Render That Component!</h4>
+
+        <p>
+          Grab content from the custom element and place it in the approriate places in the cloned template.
+        </p>
+
+        <h3>Live Demo</h3>
+
         <x-dropdown>
           <h2>
             Title 1
@@ -441,6 +546,31 @@
             Body 2
           </div>
         </x-dropdown>
+      </section>
+
+      <section>
+        <h2>Further Reading</h2>
+
+        <p>
+          Websites with good infromation on Web Components
+        </p>
+
+        <p>
+          Everything on <a href="http://webcomponents.org">webcomponents.org</a>.
+        </p>
+
+        <p>
+           Articles on Web Components on <a href="http://www.html5rocks.com/en/search?q=web+components">html5rocks.com</a>.
+        </p>
+
+        <p>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">MDN</a>'s Web Components Page.
+        </p>
+
+        <p>
+          <a href="https://component.kitchen/tutorial">component.kitchen</a>'s Tutorial.
+        </p>
+
       </section>
 
     </main>
