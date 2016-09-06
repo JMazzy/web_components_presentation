@@ -8,7 +8,8 @@ APP.TemplateExample = (function() {
       { name: "Fluffy", breed: "Doberman" },
       { name: "Fido", breed: "Wolfhound" },
       { name: "Rover", breed: "Beagle" },
-      { name: "Vicious", breed: "Bassett Hound" }
+      { name: "Vicious", breed: "Bassett Hound" },
+      { name: "Rex", breed: "Labrador Retriever" }
     ];
 
     t = document.querySelector("#dog-table-row");

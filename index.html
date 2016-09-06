@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Introduction to Web Components</title>
+
+    <!-- HTML Imports -->
     <link rel="import" href="imports.html">
   </head>
   <body>
@@ -49,17 +51,24 @@
 
         <h3>Web components are:</h3>
 
-        <h4>Reusable, Modular, Portable, and DRY</h4>
+        <h4>Portable</h4>
         <p>
           You can build a widget once, and use it anywhere. They can be stored locally or remotely and included using <code>script</code> tags like any JS file, or using HTML imports.
         </p>
 
+        <h4>Reusable</h4>
         <p>
           Web components can be reused with different content, while maintaining the same behavior. Can also be used across multiple projects and shared for use by anyone.
         </p>
 
+        <h4>Modular</h4>
         <p>
           Web components are self-contained and separate from the rest of the DOM. You can use them within your page with a custom HTML tag.
+        </p>
+
+        <h4>DRY</h4>
+        <p>
+          Web components keep your code DRY (Don't Repeat Yourself) by avoiding copy/pasting big chunks of code.
         </p>
 
       </section>
@@ -67,9 +76,18 @@
       <section>
         <h2>Specifications</h2>
 
-        <h3>Changes to web standards which enable web components (MDN):</h3>
+        <h3>General changes</h3>
+
+        <p>
+          Changes to web standards which enable web components. Changes specific to particular web component technologies are included in discussion of those. This list is according to MDN.
+        </p>
 
         <h4>New and Extended Elements</h4>
+
+        <p>
+          (Not to be confused with Custom Elements)
+        </p>
+
         <ul>
           <li>
             <code>&lt;template&gt;</code> and
@@ -77,63 +95,60 @@
           </li>
 
           <li>
-            API interfaces for new elements (<code>HTMLTemplateElement</code>, <code>HTMLShadowElement</code>)
-          </li>
-
-          <li>
-            Extensions of <code>&lt;link&gt;</code> and the <code>HTMLLinkElement</code> interface
+            Extensions of <code>&lt;link&gt;</code> to allow for HTML imports.
           </li>
         </ul>
 
-        <h4>Custom Elements Added</h4>
+        <h4>Interface Extensions</h4>
+
         <ul>
           <li>
-            Added <code>Document.registerElement()</code>, Modified <code>Document.createElement()</code> and <code>Document.createElementNS()</code>
+            API interfaces for the new and expanded elements <code>HTMLTemplateElement</code>, <code>HTMLShadowElement</code>, and <code>HTMLLinkElement</code>.
           </li>
 
           <li>
-            “Lifecycle callbacks” can be added to the prototype of a custom element
+            Extend <code>Event</code> interface as well as <code>Event.path</code> (the path of an event as it "bubbles").
           </li>
 
           <li>
-            CSS pseudo-class <code>:unresolved</code>, style elements by default
+            Document interface extensions which facilitate web component initialization.
           </li>
         </ul>
 
-        <h4>Shadow DOM Added</h4>
-        <ul>
-          <li>
-            Shadow DOM, <code>ShadowRoot</code> and <code>Element.createShadowRoot()</code>, <code>Element.getDestinationInsertionPoints()</code>, <code>Element.shadowRoot</code>
-          </li>
+      </section>
 
-          <li>
-            Extend <code>Event</code> interface, <code>Event.path</code>
-          </li>
+      <section>
 
-          <li>
-            Document interface extensions
-          </li>
-        </ul>
+        <h2>What about browser support?</h2>
 
-        <h4>New Styling</h4>
-        <ul>
+        <h3>Browser Support (Latest Versions)</h3>
 
-          <li>
-            Pseudo-classes <code>:host</code>,
-            <code>:host()</code>,
-            <code>:host-context()</code>
-          </li>
+        <h4>Chrome/Chromium</h4>
+        <p>
+          Full, native support.
+        </p>
 
-          <li>
-            Pseudo-elements <code>::shadow</code>,
-            <code>::content</code>
-          </li>
+        <h4>Opera</h4>
+        <p>
+          Full, native support.
+        </p>
 
-          <li>Combinator,
-            <code>/deep/</code>
-          </li>
+        <h4>Firefox</h4>
+        <p>
+          Full support for templates, partial support for others. Must be manually turned on in the browser.
+        </p>
 
-        </ul>
+        <h4>Safari</h4>
+
+        <p>
+          Support for templates, spotty support for the other pieces.
+        </p>
+
+        <h4>IE/Edge</h4>
+
+        <p>
+          Support for templates, spotty support for the other pieces.
+        </p>
 
       </section>
 
@@ -147,11 +162,34 @@
           Pretty self-explanatory. It lets you define and use new HTML tags. You can also extend existing tags to create new ones, and even extend your custom tags.
         </p>
 
+        <h4>Why?</h4>
+
         <p>
           The idea is to stop the proliferation of <code>div</code>s and improve readability.
         </p>
 
+        <h4>How?</h4>
+
+        <p>
+          Uses <code>document.registerElement()</code> to register the new element so it is recognized. The name must include a dash (-).
+        </p>
+
         <a href="custom_element_example.html">Custom Element Example</a>
+
+        <h4>Changes to the Specs</h4>
+        <ul>
+          <li>
+            Added <code>Document.registerElement()</code>, Modified <code>Document.createElement()</code> and <code>Document.createElementNS()</code>
+          </li>
+
+          <li>
+            “Lifecycle callbacks” can be added to the prototype of a custom element
+          </li>
+
+          <li>
+            CSS pseudo-class <code>:unresolved</code>, style elements by default
+          </li>
+        </ul>
 
         <h3>HTML Imports</h3>
 
@@ -189,7 +227,7 @@
           </li>
 
           <li>
-            Linking to markup doesn't actually substitute that tag for the content itself. You need to use JavaScript to add items to the DOM.
+            Linking to markup doesn't actually substitute that tag for the content itself (unlike server-rendered "partials" and similar). You need to use JavaScript to add items to the DOM.
           </li>
         </ul>
 
@@ -219,48 +257,58 @@
 
         <h3>Shadow DOM</h3>
 
-        <p>Sounds sketchy, but it's really not! Improves encapsulation of HTML DOM trees. You can now create a boundary between DOM trees.</p>
+        <p>
+          Sounds sketchy, but it's really not!
+        </p>
+
+        <h4>What's it used for?</h4>
+
+        <p>
+          Allows you to create isolated scopes for HTML and styles. Creates a boundary between DOM trees, and allows encapsulation of HTML DOM trees.
+        </p>
 
         <h4>The <code>&lt;shadow&gt;</code> Element</h4>
 
         <p>
-          Not useful in normal HTML - only used in web components.
+          Used only when creating custom web components, not used directly in your HTML document.
         </p>
-
-      </section>
-
-      <section>
-
-        <h2>What about browser support?</h2>
-
-        <h3>Browser Support (Latest Versions)</h3>
-
-        <h4>Chrome/Chromium</h4>
-        <p>
-          Full, native support.
-        </p>
-
-        <h4>Opera</h4>
-        <p>
-          Full, native support.
-        </p>
-
-        <h4>Firefox</h4>
-        <p>
-          Full support for templates, partial support for others. Must be manually turned on in the browser.
-        </p>
-
-        <h4>Safari</h4>
 
         <p>
-          Support for templates, spotty support for the other pieces.
+          To see the Shadow DOM in web components as well as standard complex elements like <code>audio</code> and <code>video</code>, turn on 'Show user agent shadow DOM' in the Chrome DevTools.
         </p>
 
-        <h4>IE/Edge</h4>
+        <h4>Changes to the Specs</h4>
+        <ul>
+          <li>
+            Shadow DOM, <code>ShadowRoot</code> and <code>Element.createShadowRoot()</code>, <code>Element.getDestinationInsertionPoints()</code>, <code>Element.shadowRoot</code>
+          </li>
 
-        <p>
-          Support for templates, spotty support for the other pieces.
-        </p>
+          <li>
+            Pseudo-classes <code>:host</code>,
+            <code>:host()</code>,
+            <code>:host-context()</code>
+
+            <p>
+              Selectors related to the Shadow DOM's Shadow Host (the element which "hosts" the shadow DOM).
+            </p>
+          </li>
+
+          <li>
+            Pseudo-element <code>::shadow</code>.
+
+            <p>
+              Matches the shadow root itself.
+            </p>
+          </li>
+
+          <li>Combinator,
+            <code>/deep/</code>
+
+            <p>
+              Drills down into the shadow DOM, completely ignoring the shadow boundary.
+            </p>
+          </li>
+        </ul>
 
       </section>
 
@@ -357,7 +405,7 @@
           </li>
 
           <li>
-            One JavaScript file, everything included.
+            One JavaScript file, with everything included.
 
             <ul>
               <li>Including JS files tends to work better when using items from a remote server (since it is already used very commonly in things like CDNs).</li>

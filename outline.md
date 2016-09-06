@@ -8,15 +8,19 @@
 
 ## Specifications (2 minutes)
 
+## Browser Support (1 minute)
+
 ## Technologies in Detail
 
-### Custom Elements (3 minutes)
+### Custom Elements (2 minutes)
 
-### HTML Imports (3 minutes)
+### HTML Imports (2 minutes)
 
-### HTML Templates (3 minutes)
+### HTML Templates (2 minutes)
 
-### Shadow DOM (3 minutes)
+### Shadow DOM (2 minutes)
+
+## Libraries (3 minutes)
 
 ## Making a Web Component (10 minutes)
 
